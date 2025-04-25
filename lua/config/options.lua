@@ -15,8 +15,9 @@ vim.opt.relativenumber = true -- add numbers to each line on the left side
 vim.opt.cursorline = true -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true -- open new vertical split bottom
 vim.opt.splitright = true -- open new horizontal splits right
--- vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
 vim.opt.showmode = false -- we are experienced, wo don't need the "-- INSERT --" mode hint
+vim.g.trouble_line = true
+vim.g.deprecation_warning = false
 
 -- Searching
 vim.opt.incsearch = true -- search as characters are entered
@@ -28,3 +29,9 @@ vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entere
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
+
+-- folder
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldcolumn = "1"
+vim.opt.foldenable = true

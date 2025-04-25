@@ -1,9 +1,18 @@
 return {
-	"sainnhe/sonokai",
-	lazy = false,
+	"catppuccin/nvim",
+	name = "catppuccin",
 	priority = 1000,
+	opts = {
+		integrations = {
+			gitsigns = true,
+			neotree = true,
+			treesitter = true,
+			blink_cmp = true,
+
+			mini = { enabled = true, indentscope_color = "" },
+		},
+	},
 	config = function()
-		vim.g.sonokai_enable_italic = true
-		vim.cmd.colorscheme("sonokai")
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }
