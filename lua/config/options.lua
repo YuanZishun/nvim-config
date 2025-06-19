@@ -8,3 +8,5 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.wrap = false
 vim.o.clipboard = "unnamedplus"
+vim.o.shiftwidth = 4
+vim.o.tabstop = 2
