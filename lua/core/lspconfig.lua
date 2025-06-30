@@ -9,38 +9,35 @@ local lsp_services = {
 	"prettier_d",
 	"eslint_d",
 	"stylua",
-
 }
 return {
 	-- mason.nvim - 必须在使用 mason-lspconfig 之前设置
 	{
 		"mason-org/mason.nvim",
-		opts = {
-			ensure_installed = lsp_services,
-		},
+		opts = {},
 	},
 
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local lspconfig = require('lspconfig')
+			local lspconfig = require("lspconfig")
 
 			-- 设置 LSP 的默认配置
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 			-- LSP 附加事件处理
-			vim.api.nvim_create_autocmd('LspAttach', {
-				group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
 					local opts = { buffer = ev.buf }
 
 					-- 设置键位映射
-					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-					vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-					vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-					vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				end,
 			})
 
@@ -50,15 +47,15 @@ return {
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { 'vim' }
+							globals = { "vim" },
 						},
 						workspace = {
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
-					}
-				}
+					},
+				},
 			})
-		end
+		end,
 	},
 
 	-- mason-lspconfig
@@ -70,13 +67,13 @@ return {
 		},
 		dependencies = {
 			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig"
-		}
+			"neovim/nvim-lspconfig",
+		},
 	},
 
 	-- conform.nvim
 	{
-		'stevearc/conform.nvim',
+		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -92,7 +89,13 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>cf", function() require('conform').format() end, desc = "format code" }
-		}
-	}
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ lsp_callback = true, async = true })
+				end,
+				desc = "format code",
+			},
+		},
+	},
 }

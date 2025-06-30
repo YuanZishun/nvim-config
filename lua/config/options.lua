@@ -15,3 +15,7 @@ vim.o.laststatus = 3
 vim.o.showmode = false
 vim.o.cursorline = true
 vim.o.signcolumn = "yes"
+-- 折叠栏宽度和样式
+vim.opt.foldcolumn = "0" -- 显示折叠栏
+vim.opt.foldlevel = 99 -- 默认展开所有代码
+vim.opt.foldenable = true
